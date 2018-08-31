@@ -24,6 +24,20 @@ module Backend
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
 
+    config.generators do |g|
+      g.assets false
+      g.helper false
+      g.template_engine false
+    end
+
+    config.middleware.insert_before 0, 'Rack::Cors' do
+      allow do
+        # For production, you need to replace the
+        # asterisk with the URL of your client-side application
+        origins '*'
+        resource '*', headers: :any, methods: %i[get post options]
+      end
+    end
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
@@ -31,5 +45,7 @@ module Backend
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    config.middleware.use Rack::Attack
   end
 end
