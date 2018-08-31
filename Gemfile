@@ -11,6 +11,8 @@ gem 'puma', '~> 3.11'
 
 gem 'bootsnap', '>= 1.1.0', require: false
 
+gem 'rubocop', '~> 0.52.1', require: false
+
 group :development, :test do
   gem 'pry-rails'
 end
