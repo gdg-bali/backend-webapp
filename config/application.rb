@@ -39,5 +39,8 @@ module Backend
     config.generators.system_tests = nil
 
     config.middleware.use Rack::Attack
+
+    config.time_zone = 'Singapore'
+    config.active_record.default_timezone = :local
   end
 end

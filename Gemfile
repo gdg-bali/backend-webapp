@@ -16,10 +16,13 @@ gem 'rack-attack'
 gem 'rubocop', '~> 0.52.1', require: false
 gem 'pghero'
 
+gem 'fast_jsonapi'
+
 group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails'
   gem 'factory_bot_rails'
+  gem 'faker'
 end
 
 group :development do
@@ -33,7 +36,6 @@ end
 
 group :test do
   gem 'shoulda-matchers', '~> 3.1'
-  gem 'faker'
   gem 'database_cleaner'
 end
 
