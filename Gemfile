@@ -13,7 +13,6 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'rack-cors'
 gem 'rack-attack'
 
-gem 'rubocop', '~> 0.52.1', require: false
 gem 'pghero'
 
 gem 'fast_jsonapi'
@@ -31,7 +30,9 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'fasterer'
   gem 'reek'
+  gem 'rubocop', '~> 0.52.1', require: false
   gem 'brakeman', require: false
+  gem 'solargraph'
 end
 
 group :test do
