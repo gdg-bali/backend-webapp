@@ -33,6 +33,8 @@ group :development do
   gem 'rubocop', '~> 0.52.1', require: false
   gem 'brakeman', require: false
   gem 'solargraph'
+  gem 'rails_best_practices'
+  gem 'bullet'
 end
 
 group :test do
