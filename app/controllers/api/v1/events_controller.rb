@@ -8,6 +8,12 @@ module Api
 
         json_response(EventSerializer.new(@events))
       end
+
+      def show
+        @event = Event.find_by(slug_url: params[:slug_url])
+
+        json_response(EventSerializer.new(@event, { include: [:venue] }))
+      end
     end
   end
 end

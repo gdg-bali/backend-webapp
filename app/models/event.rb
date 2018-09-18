@@ -1,6 +1,8 @@
 class Event < ApplicationRecord
   default_scope { order(starts_at: :desc) }
 
+  belongs_to :venue, optional: true
+
   scope :undecided_dates, -> { where(starts_at: nil) }
   scope :past, -> { where(arel_table[:starts_at].lt(Date.today)) }
   scope :future, -> { 
