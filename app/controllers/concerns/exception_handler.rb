@@ -5,7 +5,7 @@ module ExceptionHandler
     rescue_from ActiveRecord::RecordInvalid, with: :unprocessable
 
     rescue_from ActiveRecord::RecordNotFound do |err|
-      json_response({ message: err.message }, :not_found)
+      json_response({ message: 'Does not exists' }, :not_found)
     end
   end
 

@@ -1,4 +1,4 @@
-first_oct = DateTime.new(2018, 10, 01, 18)
+first_oct = Time.zone.parse('2018-10-01 17:00')
 
 kembali = Venue.create(
   name: 'Kembali Innovation Hub',
@@ -34,4 +34,64 @@ Event.create(
   description: 'GDG DevFests merupakan sebuah ajang yang besar di mana  kalian bisa bertemu dengan para developer baik itu yang berpengalaman  maupun yang baru ingin belajar.  Di acara ini bakal dihadiri oleh para developer yang ahli dalam bidangnya  dan akan membahas topik-topik yang tidak ingin kalian lewatkan.  Tunggu kabar lebih lanjut dari kami!',
   cover_img_url: 'https://firebasestorage.googleapis.com/v0/b/gdg-bali.appspot.com/o/events%2Fdevfest.jpg?alt=media&token=c5c6752d-8f2f-4a77-b666-0e07a5768164',
   slug_url: 'devfest-2018'
-)
+) {
+    first_name: 'Dennis',
+    last_name: 'Alund'
+  },
+  {
+    first_name: 'Prabu',
+    last_name: 'Rangki'
+  },
+  {
+    first_name: 'Wayan',
+    last_name: 'Dharmana'
+  }
+]
+
+users.each do |u|
+  User.create(u)
+end
+
+first_ses = Time.zone.parse('2018-10-01 17:00') + 60.minutes
+
+sessions = [
+  {
+    name: 'Google Keynote',
+    duration: 10,
+    user_id: 1,
+    event: event,
+    starts_at: first_ses + 90.minutes
+  },
+  {
+    name: 'Firebase',
+    duration: 30,
+    user_id: 2,
+    event: event,
+    starts_at: first_ses
+  },
+  {
+    name: 'PWA',
+    duration: 30,
+    user_id: 3,
+    event: event,
+    starts_at: first_ses + 30.minutes
+  },
+  {
+    name: 'Android',
+    duration: 30,
+    user_id: 4,
+    event: event,
+    starts_at: first_ses + 60.minutes
+  },
+  {
+    name: 'React',
+    duration: 30,
+    user_id: 1,
+    event: event,
+    starts_at: first_ses + 30.minutes
+  }
+]
+
+sessions.each do |ses|
+  Session.create(ses)
+end

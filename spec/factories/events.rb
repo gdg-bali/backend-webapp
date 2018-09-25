@@ -19,5 +19,9 @@ FactoryBot.define do
         event.ends_at = event.starts_at + 2.hours
       end
     end
+
+    after(:create) do |event|
+      create_list(:session, 5, event: event)
+    end
   end
 end
