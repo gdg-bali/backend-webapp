@@ -10,10 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_19_113357) do
+ActiveRecord::Schema.define(version: 2018_09_30_085751) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "communities", force: :cascade do |t|
+    t.string "name"
+    t.string "logo_url"
+    t.json "media_links"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "communities_events", force: :cascade do |t|
+    t.bigint "event_id"
+    t.bigint "community_id"
+    t.index ["community_id"], name: "index_communities_events_on_community_id"
+    t.index ["event_id"], name: "index_communities_events_on_event_id"
+  end
 
   create_table "events", force: :cascade do |t|
     t.string "name", null: false
@@ -26,6 +41,7 @@ ActiveRecord::Schema.define(version: 2018_09_19_113357) do
     t.bigint "venue_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "event_type"
     t.index ["venue_id"], name: "index_events_on_venue_id"
   end
 
@@ -62,6 +78,8 @@ ActiveRecord::Schema.define(version: 2018_09_19_113357) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "communities_events", "communities"
+  add_foreign_key "communities_events", "events"
   add_foreign_key "events", "venues"
   add_foreign_key "sessions", "events"
   add_foreign_key "sessions", "users"

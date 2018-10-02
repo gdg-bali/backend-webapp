@@ -4,7 +4,11 @@ module Api
   module V1
     class EventsController < ApiController
       def index
-        @events = Event.includes(:venue).get_events(params[:filter][:when])
+        if (params[:filter])
+          @events = Event.includes(:venue).get_events(params[:filter][:when])
+        else
+          @events = Event.last
+        end
 
         json_response(EventSerializer.new(@events, include: [:venue]))
       end

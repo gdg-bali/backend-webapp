@@ -4,5 +4,5 @@ class EventSerializer < BaseSerializer
 
   belongs_to :venue
   has_many :sessions, object_method_name: :sessions_with_user
-
+  has_many :communities
 end
