@@ -17,12 +17,15 @@ gem 'pghero'
 
 gem 'fast_jsonapi'
 
+gem 'omniauth-google-oauth2'
+
 group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'awesome_print'
+  gem 'dotenv-rails'
 end
 
 group :development do
