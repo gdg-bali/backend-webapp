@@ -17,6 +17,7 @@ gem 'pghero'
 
 gem 'fast_jsonapi'
 
+gem 'jwt'
 gem 'omniauth-google-oauth2'
 
 group :development, :test do

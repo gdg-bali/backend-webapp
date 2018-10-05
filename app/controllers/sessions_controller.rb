@@ -1,15 +1,27 @@
-class SessionsController < ApplicationController
-
+class SessionsController < ApiController
   def create
-    binding.pry
-  	@user = User.find_or_create_from_auth_hash(request.env["omniauth.auth"])
-  	# session[:user_id] = @user.id
-  	# redirect_to :me
+    register_user
   end
 
-  def destroy
-  	session[:user_id] = nil
-  	redirect_to root_path
+  private
+
+  def register_user
+    user = User.find_for_oauth(omniauth_auth_params)
+
+    access_token, expiry = JsonWebToken.encode(public_id: user.public_id)
+    user_json = UserSerializer.new(user, params: access_token_hash(access_token, expiry))
+
+    json_response(user_json, 201)
   end
 
+  def omniauth_auth_params
+    request.env['omniauth.auth']
+  end
+
+  def access_token_hash(access_token, expiry)
+    {
+      access_token: access_token,
+      expiry: expiry
+    }
+  end
 end

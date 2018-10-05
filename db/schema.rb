@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_02_062213) do
+ActiveRecord::Schema.define(version: 2018_10_04_071955) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,11 +38,22 @@ ActiveRecord::Schema.define(version: 2018_10_02_062213) do
     t.string "cover_img_url"
     t.string "slug_url", null: false
     t.string "meetup_url"
+    t.string "event_type"
     t.bigint "venue_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "event_type"
     t.index ["venue_id"], name: "index_events_on_venue_id"
+  end
+
+  create_table "identities", force: :cascade do |t|
+    t.string "provider"
+    t.string "uid"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["provider"], name: "index_identities_on_provider", unique: true
+    t.index ["uid"], name: "index_identities_on_uid", unique: true
+    t.index ["user_id"], name: "index_identities_on_user_id"
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -61,13 +72,12 @@ ActiveRecord::Schema.define(version: 2018_10_02_062213) do
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
-    t.string "provider"
-    t.string "uid"
+    t.string "email"
     t.string "avatar_url"
+    t.string "public_id"
     t.integer "roles_mask"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "email"
   end
 
   create_table "venues", force: :cascade do |t|
@@ -82,6 +92,7 @@ ActiveRecord::Schema.define(version: 2018_10_02_062213) do
   add_foreign_key "communities_events", "communities"
   add_foreign_key "communities_events", "events"
   add_foreign_key "events", "venues"
+  add_foreign_key "identities", "users"
   add_foreign_key "sessions", "events"
   add_foreign_key "sessions", "users"
 end
