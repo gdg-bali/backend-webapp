@@ -3,6 +3,8 @@
 module Api
   module V1
     class EventsController < ApiController
+      skip_before_action :authorize_request
+
       def index
         if (params[:filter])
           @events = Event.includes(:venue).get_events(params[:filter][:when])
