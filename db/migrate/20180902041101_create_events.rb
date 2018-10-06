@@ -8,6 +8,7 @@ class CreateEvents < ActiveRecord::Migration[5.2]
       t.string :cover_img_url
       t.string :slug_url, null: false
       t.string :meetup_url
+      t.string :event_type
 
       t.references :venue, foreign_key: true
 

@@ -3,6 +3,9 @@ class Event < ApplicationRecord
 
   belongs_to :venue, optional: true
 
+  has_many :sessions
+  has_and_belongs_to_many :communities
+
   scope :undecided_dates, -> { where(starts_at: nil) }
   scope :past, -> { where(arel_table[:starts_at].lt(Date.today)) }
   scope :future, -> { 
@@ -21,4 +24,9 @@ class Event < ApplicationRecord
       all
     end
   end
+
+  def sessions_with_user
+    sessions.includes(:user)
+  end
+
 end
