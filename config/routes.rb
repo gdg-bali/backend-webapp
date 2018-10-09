@@ -12,6 +12,8 @@ Rails.application.routes.draw do
       get 'events/:slug_url' => 'events#show'
 
       get 'profile' => 'profiles#show'
+
+      resources :venues
     end
   end
 end
