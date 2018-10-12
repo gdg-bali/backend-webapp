@@ -5,6 +5,8 @@ class Event < ApplicationRecord
 
   has_many :sessions
   has_and_belongs_to_many :communities
+  has_many :attendees
+  has_many :users, through: :attendees
 
   scope :undecided_dates, -> { where(starts_at: nil) }
   scope :past, -> { where(arel_table[:starts_at].lt(Date.today)) }

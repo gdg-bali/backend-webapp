@@ -1,15 +1,11 @@
 class UserSerializer < BaseSerializer
-  attributes :public_id, :avatar_url
+  attributes :avatar_url, :email, :name, :access_token, :expiry
 
-  attribute :full_name do |object|
-    "#{object.first_name} #{object.last_name}"
+  def access_token
+    instance_options[:access_token]
   end
 
-  attribute :access_token do |_, params|
-    params[:access_token]
-  end
-
-  attribute :expiry do |_, params|
-    params[:expiry]
+  def expiry
+    instance_options[:expiry]
   end
 end

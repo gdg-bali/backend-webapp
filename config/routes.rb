@@ -13,7 +13,9 @@ Rails.application.routes.draw do
 
       get 'profile' => 'profiles#show'
 
+      resources :users
       resources :venues
+      resources :attendees
     end
   end
 end

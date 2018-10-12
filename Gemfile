@@ -15,7 +15,7 @@ gem 'rack-attack'
 
 gem 'pghero'
 
-gem 'fast_jsonapi'
+gem 'active_model_serializers', '0.10.6'
 
 gem 'jwt'
 gem 'omniauth-google-oauth2'
@@ -46,5 +46,6 @@ group :test do
   gem 'shoulda-matchers', '~> 3.1'
   gem 'database_cleaner'
 end
+
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

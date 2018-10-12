@@ -1,4 +1,3 @@
-class BaseSerializer
-  include FastJsonapi::ObjectSerializer
-  set_key_transform :camel_lower
+class BaseSerializer < ActiveModel::Serializer
+  attributes :id
 end

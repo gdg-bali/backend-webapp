@@ -6,13 +6,13 @@ module Api
       skip_before_action :authorize_request
 
       def index
-        if (params[:filter])
-          @events = Event.includes(:venue).get_events(params[:filter][:when])
+        if (params[:when])
+          @events = Event.includes(:venue).get_events(params[:when])
         else
           @events = Event.last
         end
 
-        json_response(EventSerializer.new(@events, include: [:venue]))
+        json_response(@events)
       end
 
       def show
@@ -20,9 +20,7 @@ module Api
 
         raise ActiveRecord::RecordNotFound unless @event.present?
 
-        response = EventSerializer.new(@event, include: %i[venue sessions.user])
-
-        json_response(response)
+        json_response(@event)
       end
     end
   end

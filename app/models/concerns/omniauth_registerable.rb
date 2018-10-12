@@ -28,9 +28,9 @@ module OmniauthRegisterable
 
       def create_user_for_oauth!(auth, identity)
         auth_info = auth.info
-        user = User.new({ 
-          first_name: auth_info.first_name, 
-          last_name: auth_info.last_name, 
+
+        user = User.new({
+          name: "#{auth_info.first_name} #{auth_info.last_name}",
           email: auth_info.email,
           avatar_url: auth_info.image
         })
