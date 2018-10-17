@@ -4,7 +4,7 @@ module Api
   module V1
     class ProfilesController < ApiController
       def show
-        json_response(@current_user)
+        render json: @current_user, attends_at: true, status: 200
       end
     end
   end
