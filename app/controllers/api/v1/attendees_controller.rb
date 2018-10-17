@@ -27,11 +27,17 @@ module Api
       end
 
       def fetch_user
-        @user = User.find_by(email: user_params[:email])
-        if @user.present?
+        if request.headers['Authorization'].present?
+          authorize_request
+          @user = @current_user
           @user.attributes = user_params
         else
-          @user = User.new(user_params)
+          @user = User.find_by(email: user_params[:email])
+          if @user.present?
+            @user.attributes = user_params
+          else
+            @user = User.new(user_params)
+          end
         end
       end
 

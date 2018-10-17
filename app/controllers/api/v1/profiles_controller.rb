@@ -4,7 +4,7 @@ module Api
   module V1
     class ProfilesController < ApiController
       def show
-        puts 'PROFILEEEE'
+        json_response(@current_user)
       end
     end
   end

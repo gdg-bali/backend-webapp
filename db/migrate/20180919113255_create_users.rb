@@ -7,7 +7,6 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :public_id
       t.string :phone
       t.string :institution
-      t.json :reasons
       t.integer :roles_mask
 
       t.timestamps
