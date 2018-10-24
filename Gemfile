@@ -20,6 +20,9 @@ gem 'active_model_serializers', '0.10.6'
 gem 'jwt'
 gem 'omniauth-google-oauth2'
 
+gem 'grape'
+gem 'grape-entity'
+
 group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails'
