@@ -18,6 +18,9 @@ module V1
       route_param :slug_url do
         get do
           event = Event.find_by(slug_url: params[:slug_url])
+
+          raise ActiveRecord::RecordNotFound unless event.present?
+
           present event, with: Entities::Event
         end
       end

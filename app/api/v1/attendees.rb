@@ -17,9 +17,8 @@ module V1
 
         if @attendee.save && @user.save
           present @attendee, with: Entities::Attendee
-          # json_response(AttendeeSerializer.new(@attendee, include: %i[user]), :created)
         else
-          # json_response(@attendee.errors, 422)
+          error!(@attendee.errors, 422)
         end
       end
     end
@@ -27,7 +26,7 @@ module V1
     helpers do
       def fetch_user(user_params)
         if request.headers['Authorization'].present?
-          authorize_request
+          authenticate!
           @user = @current_user
           @user.attributes = user_params
         else
