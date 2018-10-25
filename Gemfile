@@ -15,8 +15,6 @@ gem 'rack-attack'
 
 gem 'pghero'
 
-gem 'active_model_serializers', '0.10.6'
-
 gem 'jwt'
 gem 'omniauth-google-oauth2'
 

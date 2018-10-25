@@ -7,18 +7,4 @@ Rails.application.routes.draw do
   mount Base => '/'
 
   post '/auth/:provider/callback', to: 'sessions#create'
-
-  # namespace :api, defaults: { format: :json } do
-  #   namespace :v1 do
-  #     get 'events' => 'events#index'
-  #     get 'events/:slug_url' => 'events#show'
-  #
-  #     get 'profile' => 'profiles#show'
-  #
-  #     resources :users
-  #     resources :venues
-  #     resources :attendees
-  #     resources :volunteers
-  #   end
-  # end
 end

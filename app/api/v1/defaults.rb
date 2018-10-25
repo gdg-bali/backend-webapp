@@ -40,22 +40,6 @@ module V1
           error!('Unauthorized. Invalid or expired token.', 401) unless @current_user
         end
       end
-
-      rescue_from ActiveRecord::RecordInvalid, with: :unprocessable
-
-      rescue_from ExceptionHandler::AuthenticationError, with: :unauthorized_request
-      rescue_from ExceptionHandler::MissingToken, with: :unprocessable
-      rescue_from ExceptionHandler::InvalidToken, with: :unprocessable
-    end
-
-    private
-
-    def unprocessable(err)
-      json_response({ message: err.message }, :unprocessable_entity)
-    end
-
-    def unauthorized_request(err)
-      json_response({ message: err.message }, :unauthorized)
     end
   end
 end

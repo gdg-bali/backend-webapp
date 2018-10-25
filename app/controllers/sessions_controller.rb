@@ -1,6 +1,4 @@
 class SessionsController < ApiController
-  skip_before_action :authorize_request
-
   def create
     register_user
   end
