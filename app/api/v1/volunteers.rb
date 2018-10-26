@@ -18,6 +18,7 @@ module V1
         authenticate!
         fetch_volunteer
         @current_user.attributes = user_params
+        @current_user.roles = @current_user.roles << :volunteer
 
         if @volunteer.save && @current_user.save
           status :ok
