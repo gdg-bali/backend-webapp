@@ -1,7 +1,5 @@
 module V1
-  class Volunteers < Grape::API
-    include V1::Defaults
-
+  class Volunteers < Base
     resource :volunteers do
       params do
         requires :user, type: JSON do

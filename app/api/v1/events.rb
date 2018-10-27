@@ -1,7 +1,5 @@
 module V1
-  class Events < Grape::API
-    include V1::Defaults
-
+  class Events < Base
     resource :events do
       params do
         optional :filter, type: JSON

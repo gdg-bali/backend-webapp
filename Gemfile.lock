@@ -167,6 +167,8 @@ GEM
     pry-rails (0.3.6)
       pry (>= 0.10.4)
     puma (3.12.0)
+    pundit (2.0.0)
+      activesupport (>= 3.0.0)
     rack (2.0.5)
     rack-accept (0.4.5)
       rack (>= 0.4)
@@ -313,6 +315,7 @@ DEPENDENCIES
   pghero
   pry-rails
   puma (~> 3.11)
+  pundit
   rack-attack
   rack-cors
   rails (~> 5.2.1)

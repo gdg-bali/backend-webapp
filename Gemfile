@@ -21,6 +21,8 @@ gem 'omniauth-google-oauth2'
 gem 'grape'
 gem 'grape-entity'
 
+gem 'pundit'
+
 group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails'

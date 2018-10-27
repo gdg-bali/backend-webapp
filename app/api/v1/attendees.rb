@@ -1,7 +1,5 @@
 module V1
-  class Attendees < Grape::API
-    include V1::Defaults
-
+  class Attendees < Base
     resource :attendees do
       params do
         requires :user, type: JSON
