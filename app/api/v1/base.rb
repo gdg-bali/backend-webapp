@@ -5,7 +5,8 @@ module V1
 
     mount V1::Events
     mount V1::Attendees
-    mount V1::Volunteers
+    mount V1::Submissions
     mount V1::Venues
+    mount V1::Users
   end
 end

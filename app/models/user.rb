@@ -3,17 +3,13 @@ class User < ApplicationRecord
 
   ROLES = %i[super_admin admin volunteer speaker member].freeze
 
-  has_many :sessions
   has_many :identities
 
   has_many :attendees
   has_many :attends_at, through: :attendees, source: :event
 
-  has_many :volunteers
-  has_many :volunteers_at, through: :volunteers, source: :event
-
-  has_many :speakers
-  has_many :speaks_at, through: :speakers, source: :event
+  has_many :user_sessions
+  has_many :sessions, through: :user_sessions
 
   has_secure_token :public_id
 
@@ -32,5 +28,13 @@ class User < ApplicationRecord
 
   def has_role?(role)
     roles.include?(role)
+  end
+
+  def super_admin?
+    has_role?(:super_admin)
+  end
+
+  def admin?
+    has_role?(:admin)
   end
 end

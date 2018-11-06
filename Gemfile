@@ -23,6 +23,9 @@ gem 'grape-entity'
 
 gem 'pundit'
 
+gem 'cloudinary'
+gem 'carrierwave'
+
 group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails'

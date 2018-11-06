@@ -15,7 +15,6 @@ class ApplicationPolicy
   end
 
   def create?
-    binding.pry
     false
   end
 

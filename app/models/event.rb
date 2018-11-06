@@ -1,6 +1,8 @@
 class Event < ApplicationRecord
   default_scope { order(starts_at: :desc) }
 
+  mount_uploader :cover_img_url, LogoUploader
+
   belongs_to :venue, optional: true
 
   has_many :sessions
