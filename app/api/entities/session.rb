@@ -5,11 +5,11 @@ module Entities
     expose :session_type, as: :sessionType
 
     expose :hours do |session|
-      session.starts_at.strftime('%H')
+      session.starts_at&.strftime('%H')
     end
 
     expose :minutes do |session|
-      session.starts_at.strftime('%M')
+      session.starts_at&.strftime('%M')
     end
 
     expose :users do |session|

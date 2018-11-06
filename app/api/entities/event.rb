@@ -25,9 +25,9 @@ module Entities
         end
         grouped[date] = mapped_sessions
         {
-          id: date.strftime('%H:%M'),
-          hours: date.strftime('%H'),
-          minutes: date.strftime('%M'),
+          id: date&.strftime('%H:%M'),
+          hours: date&.strftime('%H'),
+          minutes: date&.strftime('%M'),
           subSessions: mapped_sessions
         }
       end

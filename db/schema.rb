@@ -69,33 +69,20 @@ ActiveRecord::Schema.define(version: 2018_11_02_084214) do
 
   create_table "sessions", force: :cascade do |t|
     t.string "name"
+    t.string "description"
     t.integer "duration"
     t.datetime "starts_at"
     t.bigint "event_id"
-    t.bigint "user_id"
     t.string "session_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_sessions_on_event_id"
-    t.index ["user_id"], name: "index_sessions_on_user_id"
-  end
-
-  create_table "speakers", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "event_id"
-    t.datetime "registered_at"
-    t.string "reasons"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["event_id"], name: "index_speakers_on_event_id"
-    t.index ["user_id"], name: "index_speakers_on_user_id"
   end
 
   create_table "submissions", force: :cascade do |t|
     t.string "submission_type"
     t.json "reasons"
     t.bigint "user_id"
-    t.datetime "submitted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_submissions_on_user_id"
@@ -139,9 +126,6 @@ ActiveRecord::Schema.define(version: 2018_11_02_084214) do
   add_foreign_key "events", "venues"
   add_foreign_key "identities", "users"
   add_foreign_key "sessions", "events"
-  add_foreign_key "sessions", "users"
-  add_foreign_key "speakers", "events"
-  add_foreign_key "speakers", "users"
   add_foreign_key "submissions", "users"
   add_foreign_key "user_sessions", "sessions"
   add_foreign_key "user_sessions", "users"
