@@ -42,5 +42,9 @@ module Backend
 
     config.time_zone = 'Singapore'
     config.active_record.default_timezone = :local
+
+    Raven.configure do |config|
+      config.dsn = 'https://17cde95a6a8142b2ab5d24b3af5d33cb:1d2a1dfe1b074024aa0afaf146f701bc@sentry.io/1319368'
+    end
   end
 end

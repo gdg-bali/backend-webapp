@@ -26,6 +26,8 @@ gem 'pundit'
 gem 'cloudinary'
 gem 'carrierwave'
 
+gem 'sentry-raven'
+
 group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails'
