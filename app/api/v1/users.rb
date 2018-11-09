@@ -5,6 +5,11 @@ module V1
     resource :users do
       get '/profile' do
         authenticate!
+        present @current_user, with: Entities::User, profile: true
+      end
+
+      get '/validate' do
+        authenticate!
         present @current_user, with: Entities::User
       end
     end

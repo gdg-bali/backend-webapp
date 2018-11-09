@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   include OmniauthRegisterable
 
-  ROLES = %i[super_admin admin volunteer speaker member].freeze
+  ROLES = %i[super_admin admin speaker member].freeze
 
   has_many :identities
 
