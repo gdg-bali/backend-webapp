@@ -1,5 +1,7 @@
 module V1
   class Attendees < Base
+    include ::Helpers::AuthHelpers
+
     resource :attendees do
       params do
         requires :user, type: JSON
